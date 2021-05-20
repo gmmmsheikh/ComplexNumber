@@ -26,7 +26,6 @@ public class Complex implements Comparable{
     // return a string representation of the invoking Complex object
     public String toString() {
         if (im == 0) return re + "";
-        if (re == 0) return im + "i";
         if (im <  0) return re + " - " + (-im) + "i";
         return re + " + " + im + "i";
     }
@@ -78,7 +77,21 @@ public class Complex implements Comparable{
     }
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
+		Complex otherComplex = (Complex) o;
+		if(this.abs() > otherComplex.abs()) return 1;
 		return 0;
+	}
+	
+	public static void main(String[] args) {
+		
+		Complex a = new Complex(3.5, 5.5);
+		Complex b = new Complex(-3.5, 1);
+		
+		System.out.println("(3.5 + 5.5i) + (-3.5 + 1.0i) = " + a.add(b));
+		System.out.println("(3.5 + 5.5i) - (-3.5 + 1.0i) = " + a.subtract(b));
+		System.out.println("(3.5 + 5.5i) * (-3.5 + 1.0i) = " + a.multiply(b));
+		System.out.println("(3.5 + 5.5i) / (-3.5 + 1.0i) = " + a.divide(b));
+		System.out.println("| (3.5 + 5.5i) | = " + a.abs());
+				
 	}
 }
